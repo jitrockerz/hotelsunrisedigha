@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hotel Sunrise Digha | Luxury Coastal Stay</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+
+            --primary: #C86D51;
+
+            --primary-dark: #A85238;
+
+            --secondary: #1E293B;
+
+            --bg-light: #F8FAFC;
+
+            --surface: #FFFFFF;
+
+            --text: #334155;
+
+            --text-muted: #64748B;
+
+            --border: #E2E8F0;
+
+            --font-heading: 'Playfair Display', serif;
+
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+
+        }
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+        body {
+
+            font-family: var(--font-body);
+
+            color: var(--text);
+
+            background-color: var(--bg-light);
+
+            line-height: 1.6;
+
+            scroll-behavior: smooth;
+
+        }
+
+        /* Header & Navigation */
+
+        header {
+
+            position: sticky;
+
+            top: 0;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            backdrop-filter: blur(8px);
+
+            border-bottom: 1px solid var(--border);
+
+            z-index: 1000;
+
+        }
+
+        .nav-container {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 1rem 1.5rem;
+
+        }
+
+        .logo {
+
+            font-family: var(--font-heading);
+
+            font-size: 1.5rem;
+
+            font-weight: 700;
+
+            color: var(--secondary);
+
+            text-decoration: none;
+
+        }
+
+        .logo span {
+
+            color: var(--primary);
+
+        }
+
+        nav ul {
+
+            display: flex;
+
+            list-style: none;
+
+            gap: 1.5rem;
+
+        }
+
+        nav a {
+
+            text-decoration: none;
+
+            color: var(--text);
+
+            font-weight: 500;
+
+            font-size: 0.95rem;
+
+            transition: color 0.2s ease;
+
+        }
+
+        nav a:hover {
+
+            color: var(--primary);
+
+        }
+
+        /* Hero Section */
+
+        .hero {
+
+            background: linear-gradient(rgba(30, 41, 59, 0.65), rgba(30, 41, 59, 0.65)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+
+            color: #FFFFFF;
+
+            text-align: center;
+
+            padding: 6rem 1.5rem;
+
+        }
+
+        .hero-content {
+
+            max-width: 750px;
+
+            margin: 0 auto;
+
+        }
+
+        .hero h1 {
+
+            font-family: var(--font-heading);
+
+            font-size: 2.8rem;
+
+            margin-bottom: 1rem;
+
+            font-weight: 700;
+
+            line-height: 1.2;
+
+        }
+
+        .hero p {
+
+            font-size: 1.15rem;
+
+            margin-bottom: 2rem;
+
+            color: #E2E8F0;
+
+        }
+
+        .btn {
+
+            display: inline-block;
+
+            background-color: var(--primary);
+
+            color: #FFFFFF;
+
+            padding: 0.85rem 1.8rem;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            border: none;
+
+            cursor: pointer;
+
+            transition: background-color 0.2s ease;
+
+        }
+
+        .btn:hover {
+
+            background-color: var(--primary-dark);
+
+        }
+
+        /* Layout Container */
+
+        .container {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 4rem 1.5rem;
+
+        }
+
+        .section-title {
+
+            text-align: center;
+
+            margin-bottom: 3rem;
+
+        }
+
+        .section-title h2 {
+
+            font-family: var(--font-heading);
+
+            font-size: 2.1rem;
+
+            color: var(--secondary);
+
+            margin-bottom: 0.5rem;
+
+        }
+
+        .section-title p {
+
+            color: var(--text-muted);
+
+            font-size: 1rem;
+
+        }
+
+        /* Room Listings */
+
+        .rooms-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 2rem;
+
+        }
+
+        .room-card {
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+        .room-image {
+
+            height: 200px;
+
+            background-size: cover;
+
+            background-position: center;
+
+        }
+
+        .room-details {
+
+            padding: 1.5rem;
+
+            display: flex;
+
+            flex-direction: column;
+
+            flex-grow: 1;
+
+        }
+
+        .room-details h3 {
+
+            font-family: var(--font-heading);
+
+            font-size: 1.3rem;
+
+            color: var(--secondary);
+
+            margin-bottom: 0.5rem;
+
+        }
+
+        .room-features {
+
+            list-style: none;
+
+            margin: 1rem 0;
+
+            font-size: 0.9rem;
+
+            color: var(--text-muted);
+
+        }
+
+        .room-features li {
+
+            margin-bottom: 0.4rem;
+
+        }
+
+        .room-price {
+
+            margin-top: auto;
+
+            padding-top: 1rem;
+
+            border-top: 1px solid var(--border);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+        .price-amount {
+
+            font-size: 1.25rem;
+
+            font-weight: 700;
+
+            color: var(--primary);
+
+        }
+
+        /* Amenities */
+
+        .amenities-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 1.5rem;
+
+        }
+
+        .amenity-card {
+
+            background: var(--surface);
+
+            padding: 1.8rem;
+
+            border-radius: 8px;
+
+            border: 1px solid var(--border);
+
+            text-align: center;
+
+        }
+
+        .amenity-card h3 {
+
+            font-size: 1.1rem;
+
+            color: var(--secondary);
+
+            margin-bottom: 0.5rem;
+
+        }
+
+        .amenity-card p {
+
+            font-size: 0.9rem;
+
+            color: var(--text-muted);
+
+        }
+
+        /* Contact Section */
+
+        .contact-wrapper {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+            gap: 3rem;
+
+        }
+
+        .contact-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 1.2rem;
+
+        }
+
+        .info-item h4 {
+
+            font-size: 1rem;
+
+            color: var(--secondary);
+
+            margin-bottom: 0.2rem;
+
+        }
+
+        .info-item p {
+
+            color: var(--text-muted);
+
+            font-size: 0.95rem;
+
+        }
+
+        .booking-form {
+
+            background: var(--surface);
+
+            padding: 2rem;
+
+            border-radius: 8px;
+
+            border: 1px solid var(--border);
+
+        }
+
+        .form-group {
+
+            margin-bottom: 1.2rem;
+
+        }
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 0.4rem;
+
+            font-size: 0.9rem;
+
+            font-weight: 500;
+
+        }
+
+        .form-group input,
+
+        .form-group select,
+
+        .form-group textarea {
+
+            width: 100%;
+
+            padding: 0.7rem;
+
+            border: 1px solid var(--border);
+
+            border-radius: 4px;
+
+            font-family: inherit;
+
+            font-size: 0.95rem;
+
+        }
+
+        /* Footer */
+
+        footer {
+
+            background-color: var(--secondary);
+
+            color: #94A3B8;
+
+            text-align: center;
+
+            padding: 2.5rem 1.5rem;
+
+            font-size: 0.9rem;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        }
+
+        footer a {
+
+            color: #E2E8F0;
+
+            text-decoration: none;
+
+        }
+
+        @media (max-width: 768px) {
+
+            .hero h1 {
+
+                font-size: 2.1rem;
+
+            }
+
+            .nav-container {
+
+                flex-direction: column;
+
+                gap: 1rem;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Header & Navigation -->
+
+    <header>
+
+        <div class="nav-container">
+
+            <a href="#" class="logo">Hotel <span>Sunrise</span></a>
+
+            <nav>
+
+                <ul>
+
+                    <li><a href="#home">Home</a></li>
+
+                    <li><a href="#rooms">Rooms</a></li>
+
+                    <li><a href="#amenities">Amenities</a></li>
+
+                    <li><a href="#contact">Contact</a></li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- Hero Section -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <h1>Welcome to Hotel Sunrise Digha</h1>
+
+            <p>Experience peaceful coastal views, luxurious comfort, and warm hospitalities on the shores of West Bengal.</p>
+
+            <a href="#contact" class="btn">Book Your Stay</a>
+
+        </div>
+
+    </section>
+
+    <!-- Rooms Section -->
+
+    <section id="rooms" class="container">
+
+        <div class="section-title">
+
+            <h2>Accommodations</h2>
+
+            <p>Thoughtfully designed rooms tailored for relaxed coastal stays.</p>
+
+        </div>
+
+        <div class="rooms-grid">
+
+            <div class="room-card">
+
+                <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80');"></div>
+
+                <div class="room-details">
+
+                    <h3>Deluxe Sea Facing</h3>
+
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Private balcony with stunning sea views and premium amenities.</p>
+
+                    <ul class="room-features">
+
+                        <li>• King Size Bed</li>
+
+                        <li>• Private Sea View Balcony</li>
+
+                        <li>• Air Conditioning & Smart TV</li>
+
+                    </ul>
+
+                    <div class="room-price">
+
+                        <span class="price-amount">₹2,999 <small style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">/ night</small></span>
+
+                        <a href="#contact" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Reserve</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="room-card">
+
+                <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80');"></div>
+
+                <div class="room-details">
+
+                    <h3>Executive Suite</h3>
+
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Spacious layout with a dedicated living area for maximum comfort.</p>
+
+                    <ul class="room-features">
+
+                        <li>• King Bed + Sofa Lounge</li>
+
+                        <li>• Complimentary Breakfast</li>
+
+                        <li>• Luxury Bathroom Amenities</li>
+
+                    </ul>
+
+                    <div class="room-price">
+
+                        <span class="price-amount">₹4,499 <small style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">/ night</small></span>
+
+                        <a href="#contact" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Reserve</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="room-card">
+
+                <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80');"></div>
+
+                <div class="room-details">
+
+                    <h3>Family Room</h3>
+
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Perfect accommodation for families traveling together.</p>
+
+                    <ul class="room-features">
+
+                        <li>• Two Double Beds</li>
+
+                        <li>• Spacious Sitting Area</li>
+
+                        <li>• In-Room Dining Service</li>
+
+                    </ul>
+
+                    <div class="room-price">
+
+                        <span class="price-amount">₹3,799 <small style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">/ night</small></span>
+
+                        <a href="#contact" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Reserve</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Amenities Section -->
+
+    <section id="amenities" style="background-color: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Guest Amenities</h2>
+
+                <p>Enjoy modern facilities designed to make your getaway effortless.</p>
+
+            </div>
+
+            <div class="amenities-grid">
+
+                <div class="amenity-card">
+
+                    <h3>Complimentary WiFi</h3>
+
+                    <p>High-speed wireless internet access across all rooms and common areas.</p>
+
+                </div>
+
+                <div class="amenity-card">
+
+                    <h3>Multi-Cuisine Restaurant</h3>
+
+                    <p>Fresh local seafood delicacies alongside North Indian and Chinese menus.</p>
+
+                </div>
+
+                <div class="amenity-card">
+
+                    <h3>Direct Beach Access</h3>
+
+                    <p>Situated within short walking distance of Digha’s main sea beach.</p>
+
+                </div>
+
+                <div class="amenity-card">
+
+                    <h3>24/7 Room Service</h3>
+
+                    <p>Round-the-clock front desk assistance and prompt in-room dining.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Contact & Reservation -->
+
+    <section id="contact" class="container">
+
+        <div class="section-title">
+
+            <h2>Contact & Reservations</h2>
+
+            <p>Get in touch or send a booking inquiry directly to our desk.</p>
+
+        </div>
+
+        <div class="contact-wrapper">
+
+            <div class="contact-info">
+
+                <div class="info-item">
+
+                    <h4>Hotel Address</h4>
+
+                    <p>Hotel Sunrise, Sea Beach Road, New Digha, Purba Medinipur, West Bengal - 721428</p>
+
+                </div>
+
+                <div class="info-item">
+
+                    <h4>Phone / WhatsApp</h4>
+
+                    <p>+91 98765 43210 / +91 98765 43211</p>
+
+                </div>
+
+                <div class="info-item">
+
+                    <h4>Email Inquiries</h4>
+
+                    <p>info@hotelsunrisedigha.com</p>
+
+                </div>
+
+                <div class="info-item">
+
+                    <h4>Check-In / Check-Out</h4>
+
+                    <p>Check-In: 11:00 AM | Check-Out: 10:00 AM</p>
+
+                </div>
+
+            </div>
+
+            <div class="booking-form">
+
+                <form onsubmit="event.preventDefault(); alert('Inquiry sent successfully! We will contact you shortly.');">
+
+                    <div class="form-group">
+
+                        <label for="name">Full Name</label>
+
+                        <input type="text" id="name" required placeholder="Enter your name">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="email">Email Address</label>
+
+                        <input type="email" id="email" required placeholder="Enter your email">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="room">Room Preference</label>
+
+                        <select id="room">
+
+                            <option>Deluxe Sea Facing</option>
+
+                            <option>Executive Suite</option>
+
+                            <option>Family Room</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="message">Message / Arrival Dates</label>
+
+                        <textarea id="message" rows="3" placeholder="Specify check-in date and special requests"></textarea>
+
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%;">Submit Inquiry</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>&copy; 2026 Hotel Sunrise Digha. All Rights Reserved. | <a href="https://hotelsunrisedigha.com">hotelsunrisedigha.com</a></p>
+
+    </footer>
+
+</body>
+
+</html>
