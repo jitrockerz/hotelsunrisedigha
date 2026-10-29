@@ -94,7 +94,7 @@ nav a:hover { color: var(--primary); }
 
 /* Gallery Section */
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 32px; }
-.gallery-item { border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border: 1px solid var(--border); background: var(--surface); }
+.gallery-item { border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border: 1px solid var(--border); background: var(--surface); cursor: pointer; }
 .gallery-item img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.3s ease; }
 .gallery-item:hover img { transform: scale(1.05); }
 .gallery-caption { padding: 12px; font-size: 0.9rem; color: var(--secondary); text-align: center; font-weight: 500; }
@@ -143,7 +143,6 @@ nav a:hover { color: var(--primary); }
   object-fit: cover;
   border-radius: 6px;
 }
-.clickable-item { cursor: pointer; }
 
 /* Amenities */
 #amenities { background: var(--surface); border-block: 1px solid var(--border); }
@@ -305,21 +304,25 @@ footer a { color: #e2e8f0; text-decoration: none; }
       <p>Take a look at our property, rooms, and surroundings in Old Digha.</p>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item clickable-item" id="openGallery" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open more exterior photos">
+      <!-- Exterior Gallery Card -->
+      <div class="gallery-item clickable-item" id="openExteriorGallery" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open more exterior photos">
         <img src="https://lh3.googleusercontent.com/VQiMkGVkjJva9jOlzYNCHfeFXTpa7JbdenICGqPLGNF_6StyHCOSI5RkdK57h8HyPXnSgn40v_QoX1he=w885" alt="Hotel Sunrise Digha Exterior">
         <div class="gallery-caption">Hotel Exterior (Click for more)</div>
       </div>
-      <div class="gallery-item">
-        <img src="https://placehold.co/600x400/e2e8f0/1e293b?text=AC+Deluxe+Room" alt="AC Deluxe Room" loading="lazy">
-        <div class="gallery-caption">AC Deluxe Room</div>
+      <!-- AC Deluxe Gallery Card -->
+      <div class="gallery-item clickable-item" id="openAcDeluxeGallery" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open more AC Deluxe photos">
+        <img src="acdeluxe1.jpeg" alt="AC Deluxe Room" loading="lazy">
+        <div class="gallery-caption">AC Deluxe Room (Click for more)</div>
       </div>
-      <div class="gallery-item">
-        <img src="https://placehold.co/600x400/e2e8f0/1e293b?text=Standard+Room" alt="Standard Room" loading="lazy">
-        <div class="gallery-caption">Standard Room</div>
+      <!-- AC Standard Gallery Card -->
+      <div class="gallery-item clickable-item" id="openAcStdGallery" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open more AC Standard photos">
+        <img src="acstd1.jpeg" alt="AC Standard Room" loading="lazy">
+        <div class="gallery-caption">AC Standard Room (Click for more)</div>
       </div>
-      <div class="gallery-item">
-        <img src="https://placehold.co/600x400/e2e8f0/1e293b?text=Reception+Area" alt="Reception Area" loading="lazy">
-        <div class="gallery-caption">Reception &amp; Lobby</div>
+      <!-- Non-AC Room Gallery Card -->
+      <div class="gallery-item clickable-item" id="openNonAcGallery" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open more Non-AC Room photos">
+        <img src="nonac1.jpeg" alt="Non-AC Room" loading="lazy">
+        <div class="gallery-caption">Non-AC Room (Click for more)</div>
       </div>
     </div>
   </section>
@@ -409,11 +412,11 @@ footer a { color: #e2e8f0; text-decoration: none; }
     </div>
   </section>
 
-  <!-- The Modal -->
-  <div id="exteriorModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <!-- The Exterior Modal -->
+  <div id="exteriorModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="exteriorModalTitle">
     <div class="modal-content">
-      <button type="button" class="close-modal" id="closeModalBtn" aria-label="Close">&times;</button>
-      <h3 id="modalTitle">More Exterior Photos</h3>
+      <button type="button" class="close-modal" aria-label="Close">&times;</button>
+      <h3 id="exteriorModalTitle">More Exterior Photos</h3>
       <div class="modal-grid">
         <img src="exterior1.jpg" alt="Exterior View 1" loading="lazy">
         <img src="exterior2.webp" alt="Exterior View 2" loading="lazy">
@@ -426,6 +429,49 @@ footer a { color: #e2e8f0; text-decoration: none; }
       </div>
     </div>
   </div>
+
+  <!-- The AC Deluxe Modal -->
+  <div id="acDeluxeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="acDeluxeModalTitle">
+    <div class="modal-content">
+      <button type="button" class="close-modal" aria-label="Close">&times;</button>
+      <h3 id="acDeluxeModalTitle">AC Deluxe Room Photos</h3>
+      <div class="modal-grid">
+        <img src="acdeluxe1.jpeg" alt="AC Deluxe Room View 1" loading="lazy">
+        <img src="acdeluxe2.jpeg" alt="AC Deluxe Room View 2" loading="lazy">
+        <img src="acdeluxe3.jpeg" alt="AC Deluxe Room View 3" loading="lazy">
+        <img src="acdeluxe4.jpeg" alt="AC Deluxe Room View 4" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <!-- The AC Standard Modal -->
+  <div id="acStdModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="acStdModalTitle">
+    <div class="modal-content">
+      <button type="button" class="close-modal" aria-label="Close">&times;</button>
+      <h3 id="acStdModalTitle">AC Standard Room Photos</h3>
+      <div class="modal-grid">
+        <img src="acstd1.jpeg" alt="AC Standard Room View 1" loading="lazy">
+        <img src="acstd2.jpeg" alt="AC Standard Room View 2" loading="lazy">
+        <img src="acstd3.jpeg" alt="AC Standard Room View 3" loading="lazy">
+        <img src="acstd4.jpeg" alt="AC Standard Room View 4" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <!-- The Non-AC Room Modal -->
+  <div id="nonAcModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="nonAcModalTitle">
+    <div class="modal-content">
+      <button type="button" class="close-modal" aria-label="Close">&times;</button>
+      <h3 id="nonAcModalTitle">Non-AC Room Photos</h3>
+      <div class="modal-grid">
+        <img src="nonac1.jpeg" alt="Non-AC Room View 1" loading="lazy">
+        <img src="nonac2.jpeg" alt="Non-AC Room View 2" loading="lazy">
+        <img src="nonac3.jpeg" alt="Non-AC Room View 3" loading="lazy">
+        <img src="nonac4.jpeg" alt="Non-AC Room View 4" loading="lazy">
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer>
@@ -434,31 +480,67 @@ footer a { color: #e2e8f0; text-decoration: none; }
 
 <script>
   (function () {
-    var modal = document.getElementById("exteriorModal");
-    var opener = document.getElementById("openGallery");
-    var closeBtn = document.getElementById("closeModalBtn");
     var lastFocus = null;
 
-    function openModal() {
+    function openModal(modalId) {
       lastFocus = document.activeElement;
-      modal.style.display = "block";
-      document.body.style.overflow = "hidden";
-      closeBtn.focus();
+      var modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = "block";
+        var closeBtn = modal.querySelector('.close-modal');
+        if (closeBtn) closeBtn.focus();
+      }
     }
-    function closeModal() {
+
+    function closeModal(modal) {
       modal.style.display = "none";
-      document.body.style.overflow = "";
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
 
-    opener.addEventListener("click", openModal);
-    opener.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(); }
+    // Map the gallery item IDs to their corresponding modal IDs
+    var modalMappings = {
+      'openExteriorGallery': 'exteriorModal',
+      'openAcDeluxeGallery': 'acDeluxeModal',
+      'openAcStdGallery': 'acStdModal',
+      'openNonAcGallery': 'nonAcModal'
+    };
+
+    // Attach open events
+    for (var openerId in modalMappings) {
+      if (modalMappings.hasOwnProperty(openerId)) {
+        var opener = document.getElementById(openerId);
+        if (opener) {
+          (function(mId) {
+            opener.addEventListener("click", function() { openModal(mId); });
+            opener.addEventListener("keydown", function(e) {
+              if (e.key === "Enter" || e.key === " ") { 
+                e.preventDefault(); 
+                openModal(mId); 
+              }
+            });
+          })(modalMappings[openerId]);
+        }
+      }
+    }
+
+    // Attach close events
+    var modals = document.querySelectorAll('.modal');
+    modals.forEach(function(modal) {
+      var closeBtn = modal.querySelector('.close-modal');
+      if (closeBtn) {
+        closeBtn.addEventListener("click", function() { closeModal(modal); });
+      }
+      modal.addEventListener("click", function(e) {
+        if (e.target === modal) closeModal(modal);
+      });
     });
-    closeBtn.addEventListener("click", closeModal);
-    modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && modal.style.display === "block") closeModal();
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        modals.forEach(function(modal) {
+          if (modal.style.display === "block") closeModal(modal);
+        });
+      }
     });
   })();
 </script>
