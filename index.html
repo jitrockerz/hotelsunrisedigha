@@ -1,6 +1,10 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Hotel Sunrise Digha</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
 <style>
 :root {
@@ -34,9 +38,11 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
 body { font-family: var(--font-body); color: var(--text); background: var(--bg); line-height: 1.6; }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 1100; background: var(--surface); }
+img { max-width: 100%; }
+[hidden]:not([hidden=until-found i]) { display: none !important; }
 :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
 a { color: inherit; }
 .wrap { max-width: 1100px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -95,12 +101,12 @@ nav a:hover { color: var(--primary); }
 
 /* Modal Popup Gallery */
 .modal {
-  display: none; 
-  position: fixed; 
-  z-index: 2000; 
-  left: 0; top: 0; 
-  width: 100%; height: 100%; 
-  background-color: rgba(15, 23, 42, 0.9); 
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(15, 23, 42, 0.9);
   overflow-y: auto;
   padding: 40px 20px;
 }
@@ -114,11 +120,15 @@ nav a:hover { color: var(--primary); }
 }
 .close-modal {
   position: absolute;
-  top: 10px; right: 16px;
+  top: 8px; right: 12px;
+  background: none;
+  border: 0;
   color: var(--secondary);
   font-size: 28px;
+  line-height: 1;
   font-weight: bold;
   cursor: pointer;
+  padding: 4px 10px;
 }
 .close-modal:hover { color: var(--primary); }
 .modal-grid {
@@ -157,6 +167,14 @@ nav a:hover { color: var(--primary); }
 .qr-card img { border: 4px solid var(--bg); border-radius: 8px; outline: 1px solid var(--border); }
 .qr-card p { font-weight: 600; color: var(--secondary); margin-top: 4px; }
 
+/* Terms & Conditions */
+.terms { max-width: 800px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 28px 32px 28px 24px; }
+.terms ol { padding-left: 1.6rem; }
+.terms li { margin-bottom: 12px; padding-left: 6px; font-size: 0.95rem; color: var(--text); }
+.terms li:last-child { margin-bottom: 0; }
+.terms a { color: var(--primary-dark); font-weight: 600; }
+@media (max-width: 640px) { .terms { padding: 20px 16px 20px 8px; } }
+
 footer { background: var(--secondary); color: #94a3b8; text-align: center; padding: 40px 0; font-size: 0.9rem; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) footer { background: #0a1020; } }
 :root[data-theme="dark"] footer { background: #0a1020; }
@@ -165,8 +183,10 @@ footer a { color: #e2e8f0; text-decoration: none; }
   .hero-content { padding: 64px 0 120px; }
   .container { padding-block: 48px; }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn, .gallery-item img { transition: none; } }
 </style>
+</head>
+<body>
 
 <header>
   <div class="wrap nav">
@@ -178,6 +198,7 @@ footer a { color: #e2e8f0; text-decoration: none; }
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#amenities">Amenities</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#terms">Terms</a></li>
       </ul>
     </nav>
   </div>
@@ -284,21 +305,21 @@ footer a { color: #e2e8f0; text-decoration: none; }
       <p>Take a look at our property, rooms, and surroundings in Old Digha.</p>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item clickable-item" onclick="openModal()">
+      <div class="gallery-item clickable-item" id="openGallery" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open more exterior photos">
         <img src="https://lh3.googleusercontent.com/VQiMkGVkjJva9jOlzYNCHfeFXTpa7JbdenICGqPLGNF_6StyHCOSI5RkdK57h8HyPXnSgn40v_QoX1he=w885" alt="Hotel Sunrise Digha Exterior">
         <div class="gallery-caption">Hotel Exterior (Click for more)</div>
       </div>
       <div class="gallery-item">
-        <img src="https://placehold.co/600x400/e2e8f0/1e293b?text=AC+Deluxe+Room" alt="AC Deluxe Room from MakeMyTrip">
+        <img src="https://placehold.co/600x400/e2e8f0/1e293b?text=AC+Deluxe+Room" alt="AC Deluxe Room" loading="lazy">
         <div class="gallery-caption">AC Deluxe Room</div>
       </div>
       <div class="gallery-item">
-        <img src="https://placehold.co/600x400/e2e8f0/1e293b?text=Standard+Room" alt="Standard Room from Goibibo">
+        <img src="https://placehold.co/600x400/e2e8f0/1e293b?text=Standard+Room" alt="Standard Room" loading="lazy">
         <div class="gallery-caption">Standard Room</div>
       </div>
       <div class="gallery-item">
-        <img src="https://placehold.co/600x400/e2e8f0/1e293b?text=Reception+Area" alt="Reception Area">
-        <div class="gallery-caption">Reception & Lobby</div>
+        <img src="https://placehold.co/600x400/e2e8f0/1e293b?text=Reception+Area" alt="Reception Area" loading="lazy">
+        <div class="gallery-caption">Reception &amp; Lobby</div>
       </div>
     </div>
   </section>
@@ -319,8 +340,8 @@ footer a { color: #e2e8f0; text-decoration: none; }
           <h3>Close to Market</h3><p>Easy walking access to local shops and the vibrant Old Digha marketplace.</p>
         </div>
         <div>
-          <svg viewBox="0 0 44 44" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="22" cy="17" r="6"/><path d="M4 31c4-4 8-4 12 0s8 4 12 0 8-4 12 0M4 38c4-4 8-4 12 0s8 4 12 0 8-4 12 0"/></svg>
-          <h3>Power Backup</h3><p>Uninterrupted basic comforts provided by our reliable power backup system.</p>
+          <svg viewBox="0 0 44 44" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path stroke-linejoin="round" d="M25 5L10 25h10l-2 14 16-21H24z"/></svg>
+          <h3>Power Backup</h3><p>Generator backup for lights and fans during load-shedding.</p>
         </div>
         <div>
           <svg viewBox="0 0 44 44" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="22" cy="23" r="15"/><path d="M22 13v10l7 4"/></svg>
@@ -340,7 +361,7 @@ footer a { color: #e2e8f0; text-decoration: none; }
         <div><h4>Hotel Address</h4><p>Hotel Sunrise, Foreshore Road, Gobindabasan, Opposite Punjab National Bank, Old Digha, Purba Medinipur, West Bengal - 721428</p></div>
         <div><h4>Phone / WhatsApp</h4><p><a href="tel:+919093702410">+91 9093702410</a></p></div>
         <div><h4>Check-In / Check-Out</h4><p>Check-In: 10:00 AM | Check-Out: 09:30 AM</p></div>
-        
+
         <!-- Google QR Code Card -->
         <div class="qr-card">
           <div class="g-brand">
@@ -354,20 +375,54 @@ footer a { color: #e2e8f0; text-decoration: none; }
     </div><!-- /contact -->
   </section>
 
+  <section id="terms" class="container wrap">
+    <div class="title">
+      <h2>Terms &amp; Conditions</h2>
+      <p>Please read the following conditions before booking your stay at Hotel Sunrise.</p>
+    </div>
+    <div class="terms">
+      <ol>
+        <li>Rooms at Hotel Sunrise may be reserved in advance.</li>
+        <li>An extra person may be accommodated for an extra charge of Rs. 200 per day (without cot).</li>
+        <li>Room service hours are 6:00 a.m. to 1:00 p.m. and 3:00 p.m. to 10:00 p.m.</li>
+        <li>Hotel Sunrise is located opposite Punjab National Bank (PNB).</li>
+        <li>Full payment of the accommodation charges is required at the time of advance booking.</li>
+        <li>Generator service is provided during load-shedding from 12:00 noon to 3:30 p.m. and from 9:00 p.m. to 4:00 a.m., for lights and fans only.</li>
+        <li>Extension of a booking is subject to room availability.</li>
+        <li>Cancellation of a booking will be charged at 50% of the total accommodation charges if intimated in writing at least 24 hours in advance. Otherwise, the full accommodation charges will be retained.</li>
+        <li>A day is counted from 10:00 a.m. to 9:30 a.m. the next day, or any part thereof. Check-in time is 10:00 a.m. and check-out time is 9:30 a.m.</li>
+        <li>Misuse of water and electricity is prohibited.</li>
+        <li>No articles, including bed linen, screens, chairs, etc., may be taken outside the hotel room.</li>
+        <li>Outside guests of any boarder are not allowed in the rooms or on the premises without the Manager's permission.</li>
+        <li>The management accepts no responsibility for loss of or damage to cash, jewellery, cheques or other valuables belonging to the occupants.</li>
+        <li>The main gate of the hotel is closed at 10:00 p.m.</li>
+        <li>Pets (animals and birds) are not allowed in the rooms or on the premises.</li>
+        <li>A fine of Rs. 2 per square inch will be charged for writing or printing on walls.</li>
+        <li>The cost of any loss of or damage to articles supplied by the hotel will be recovered from the occupants at the current price.</li>
+        <li>One or two children below 8 years of age may stay with their guardian free of charge.</li>
+        <li>The management reserves the right to cancel or refuse a reservation without giving any reason.</li>
+        <li>For any suggestions, please call <a href="tel:+919434217962">9434217962</a>.</li>
+        <li>A caution money deposit of Rs. 200 per room must be paid at the hotel.</li>
+        <li>Cooking is not allowed on the premises of Hotel Sunrise.</li>
+        <li>A photocopy (Xerox) of an Aadhaar card or Voter ID card must be submitted at check-in.</li>
+      </ol>
+    </div>
+  </section>
+
   <!-- The Modal -->
-  <div id="exteriorModal" class="modal">
+  <div id="exteriorModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-content">
-      <span class="close-modal" onclick="closeModal()">&times;</span>
-      <h3>More Exterior Photos</h3>
+      <button type="button" class="close-modal" id="closeModalBtn" aria-label="Close">&times;</button>
+      <h3 id="modalTitle">More Exterior Photos</h3>
       <div class="modal-grid">
-        <img src="exterior1.jpg" alt="Exterior View 1">
-        <img src="exterior2.webp" alt="Exterior View 2">
-        <img src="exterior3.webp" alt="Exterior View 3">
-        <img src="exterior4.webp" alt="Exterior View 4">
-        <img src="exterior5.webp" alt="Exterior View 5">
-        <img src="exterior6.webp" alt="Exterior View 6">
-        <img src="exterior7.webp" alt="Exterior View 7">
-        <img src="exterior8.webp" alt="Exterior View 8">
+        <img src="exterior1.jpg" alt="Exterior View 1" loading="lazy">
+        <img src="exterior2.webp" alt="Exterior View 2" loading="lazy">
+        <img src="exterior3.webp" alt="Exterior View 3" loading="lazy">
+        <img src="exterior4.webp" alt="Exterior View 4" loading="lazy">
+        <img src="exterior5.webp" alt="Exterior View 5" loading="lazy">
+        <img src="exterior6.webp" alt="Exterior View 6" loading="lazy">
+        <img src="exterior7.webp" alt="Exterior View 7" loading="lazy">
+        <img src="exterior8.webp" alt="Exterior View 8" loading="lazy">
       </div>
     </div>
   </div>
@@ -378,22 +433,35 @@ footer a { color: #e2e8f0; text-decoration: none; }
 </footer>
 
 <script>
-  // Modal Script - Ensures it finds the exact ID 'exteriorModal'
-  window.openModal = function() {
+  (function () {
     var modal = document.getElementById("exteriorModal");
-    if(modal) {
+    var opener = document.getElementById("openGallery");
+    var closeBtn = document.getElementById("closeModalBtn");
+    var lastFocus = null;
+
+    function openModal() {
+      lastFocus = document.activeElement;
       modal.style.display = "block";
       document.body.style.overflow = "hidden";
+      closeBtn.focus();
     }
-  };
-  
-  window.closeModal = function() {
-    var modal = document.getElementById("exteriorModal");
-    if(modal) {
+    function closeModal() {
       modal.style.display = "none";
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
-  };
+
+    opener.addEventListener("click", openModal);
+    opener.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(); }
+    });
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.style.display === "block") closeModal();
+    });
+  })();
 </script>
 
-</body></html>
+</body>
+</html>
